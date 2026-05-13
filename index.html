@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>beyond45rpm — Gallery</title>
+<meta name="description" content="3D printed objects for vinyl lovers. Handmade in NYC.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elev: #141414;
+    --bg-card: #1a1a1a;
+    --ink: #ededed;
+    --ink-dim: #888888;
+    --ink-faint: #4a4a4a;
+    --accent: #d4b896;
+    --line: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* subtle grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: overlay;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    padding: 36px 48px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    position: relative;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+
+  .logo em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-meta {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 120px 48px 80px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 8vw, 108px);
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+    color: var(--ink);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .hero-sub {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(16px, 1.6vw, 20px);
+    line-height: 1.6;
+    color: var(--ink-dim);
+    max-width: 560px;
+  }
+
+  /* ============ GALLERY ============ */
+  .gallery {
+    padding: 80px 48px 120px;
+  }
+
+  .gallery-header {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 24px;
+  }
+
+  .gallery-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .gallery-count {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .gallery-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 4px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .gallery-item {
+    background: var(--bg);
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .gallery-item:hover {
+    background: var(--bg-elev);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.04);
+    opacity: 0.7;
+  }
+
+  .gallery-item .placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    color: var(--ink-faint);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 40px;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .gallery-item .placeholder-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--ink-faint);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-item .placeholder-icon::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--ink-faint);
+    border-radius: 50%;
+  }
+
+  /* item info overlay */
+  .item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.4) 70%, transparent);
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .gallery-item:hover .item-info {
+    transform: translateY(0);
+  }
+
+  .item-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.2px;
+  }
+
+  .item-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .item-price { color: var(--accent); }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 48px;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  .footer-credit {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .footer-credit em {
+    color: var(--accent);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    header { padding: 24px 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .hero { padding: 60px 24px 50px; }
+    .gallery { padding: 50px 16px 80px; }
+    .gallery-header { padding: 0 8px 20px; margin-bottom: 32px; }
+    .gallery-title { font-size: 24px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+    footer { padding: 36px 24px; }
+    .footer-links { gap: 20px; }
+    /* mobile: always show info */
+    .item-info {
+      transform: translateY(0);
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      padding: 16px 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="logo">beyond<em>45</em>rpm</div>
+  <div class="header-meta">NYC · Est. 2022</div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Gallery</div>
+    <h1>Objects for<br>those who <em>spin</em>.</h1>
+    <p class="hero-sub">
+      3D printed pieces for vinyl lovers. Designed and made by hand in New York City.
+    </p>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery">
+  <div class="gallery-header">
+    <div class="gallery-title">Selected Works</div>
+    <div class="gallery-count">04 / Pieces</div>
+  </div>
+
+  <div class="gallery-grid">
+
+    <a href="https://www.etsy.com/listing/4468318516/3d-printed-7-inch-vinyl-record-storage" target="_blank" rel="noopener" class="gallery-item">
+      <img src="images/vinyl-box-clear.jpg" alt="Clear Translucent 7-Inch Vinyl Storage Box" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder" style="display:none;">
+        <div class="placeholder-icon"></div>
+        <div>Clear Vinyl Box</div>
+      </div>
+      <div class="item-info">
+        <div class="item-title">Clear Translucent Vinyl Box</div>
+        <div class="item-meta">
+          <span>7-Inch · 40–50 Singles</span>
+          <span class="item-price">$75</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.etsy.com/listing/4301266679/3d-printed-7-inch-vinyl-record-storage" target="_blank" rel="noopener" class="gallery-item">
+      <img src="images/vinyl-box-yellow.jpg" alt="Yellow 7-Inch Vinyl Storage Box" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder" style="display:none;">
+        <div class="placeholder-icon"></div>
+        <div>Yellow Vinyl Box</div>
+      </div>
+      <div class="item-info">
+        <div class="item-title">Yellow Vinyl Storage Box</div>
+        <div class="item-meta">
+          <span>7-Inch · 40–50 Singles</span>
+          <span class="item-price">$68</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.etsy.com/listing/4313262158/im-spinning-it-fade-in-out-3d-printed" target="_blank" rel="noopener" class="gallery-item">
+      <img src="images/45rpm-adapters.jpg" alt="Fast Food Edition 45RPM Adapters" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder" style="display:none;">
+        <div class="placeholder-icon"></div>
+        <div>Fast Food Adapters</div>
+      </div>
+      <div class="item-info">
+        <div class="item-title">45RPM Adapters — Fast Food Edition</div>
+        <div class="item-meta">
+          <span>Set of 2</span>
+          <span class="item-price">$30</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.etsy.com/shop/beyond45rpm" target="_blank" rel="noopener" class="gallery-item">
+      <img src="images/coming-soon.jpg" alt="More coming soon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder" style="display:none;">
+        <div class="placeholder-icon"></div>
+        <div>More Coming Soon</div>
+      </div>
+      <div class="item-info">
+        <div class="item-title">In the Studio</div>
+        <div class="item-meta">
+          <span>New Pieces</span>
+          <span class="item-price">—</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-links">
+    <a href="https://www.etsy.com/shop/beyond45rpm" target="_blank" rel="noopener">Etsy Shop</a>
+    <a href="https://www.instagram.com/ssumwear" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <div class="footer-credit">
+    beyond45rpm — <em>handmade in nyc</em>
+  </div>
+</footer>
+
+</body>
+</html>
