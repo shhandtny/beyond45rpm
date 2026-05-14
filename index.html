@@ -309,24 +309,20 @@
     grid-row: span 2;
   }
 
-  /* specific placements */
+  /* specific placements - 4 items */
   .mood-item:nth-child(1) {
-    grid-column: span 3;
+    grid-column: span 4;
     grid-row: span 2;
   }
   .mood-item:nth-child(2) {
-    grid-column: span 3;
+    grid-column: span 2;
     grid-row: span 1;
   }
   .mood-item:nth-child(3) {
-    grid-column: span 3;
+    grid-column: span 2;
     grid-row: span 1;
   }
   .mood-item:nth-child(4) {
-    grid-column: span 3;
-    grid-row: span 2;
-  }
-  .mood-item:nth-child(5) {
     grid-column: span 6;
     grid-row: span 2;
   }
@@ -416,13 +412,12 @@
     .mood-item:nth-child(1),
     .mood-item:nth-child(2),
     .mood-item:nth-child(3),
-    .mood-item:nth-child(4),
-    .mood-item:nth-child(5) {
+    .mood-item:nth-child(4) {
       grid-column: span 1;
       grid-row: span 1;
     }
-    /* make the hero shot (5th) full-width on mobile */
-    .mood-item:nth-child(5) {
+    /* make the last hero shot full-width on mobile */
+    .mood-item:nth-child(4) {
       grid-column: span 2;
       grid-row: span 2;
     }
@@ -528,15 +523,12 @@
 <section class="mood-gallery">
   <div class="gallery-header">
     <div class="gallery-title">From the Studio</div>
-    <div class="gallery-count">05 / Moments</div>
+    <div class="gallery-count">04 / Moments</div>
   </div>
 
   <div class="mood-grid">
     <div class="mood-item mood-tall">
       <img src="images/extra-05.jpg" alt="DJ setup with turntable and vinyl boxes">
-    </div>
-    <div class="mood-item">
-      <img src="images/extra-04.jpg" alt="Clear vinyl storage box with charms">
     </div>
     <div class="mood-item">
       <img src="images/extra-02.jpg" alt="Pink rose 45RPM adapter on turntable">
