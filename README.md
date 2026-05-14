@@ -52,7 +52,7 @@ git push -u origin main
 | `vinyl-box-clear.jpg` | Clear Translucent Vinyl Box ($75) |
 | `vinyl-box-yellow.jpg` | Yellow Vinyl Box ($68) |
 | `45rpm-adapters.jpg` | Fast Food 45RPM Adapters ($30) |
-| `coming-soon.jpg` | (선택) 새 제품 또는 작업실 사진 |
+| `heart-adore-adapters.jpg` | Heart & Adore 45RPM Adapters ($45) |
 
 **팁:** 정사각형 1:1 비율이 가장 깔끔하게 보여요. 800x800px ~ 1200x1200px 추천.
 **다크톤이라** 사진이 밝고 깨끗할수록 갤러리에서 잘 떠 보여요.
