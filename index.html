@@ -291,40 +291,15 @@
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 180px;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
-  /* layout: first item tall (2 rows, 2 cols), then varied */
   .mood-item {
     overflow: hidden;
     background: var(--bg-card);
     position: relative;
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-
-  .mood-item.mood-tall {
-    grid-row: span 2;
-  }
-
-  /* specific placements - 4 items */
-  .mood-item:nth-child(1) {
-    grid-column: span 4;
-    grid-row: span 2;
-  }
-  .mood-item:nth-child(2) {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-  .mood-item:nth-child(3) {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-  .mood-item:nth-child(4) {
-    grid-column: span 6;
-    grid-row: span 2;
+    aspect-ratio: 1;
   }
 
   .mood-item img {
@@ -404,22 +379,7 @@
     .mood-gallery .gallery-header { padding: 0 8px 20px; margin-bottom: 32px; }
     .mood-grid {
       grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 160px;
       gap: 6px;
-    }
-    .mood-item,
-    .mood-item.mood-tall,
-    .mood-item:nth-child(1),
-    .mood-item:nth-child(2),
-    .mood-item:nth-child(3),
-    .mood-item:nth-child(4) {
-      grid-column: span 1;
-      grid-row: span 1;
-    }
-    /* make the last hero shot full-width on mobile */
-    .mood-item:nth-child(4) {
-      grid-column: span 2;
-      grid-row: span 2;
     }
   }
 
@@ -527,7 +487,7 @@
   </div>
 
   <div class="mood-grid">
-    <div class="mood-item mood-tall">
+    <div class="mood-item">
       <img src="images/extra-05.jpg" alt="DJ setup with turntable and vinyl boxes">
     </div>
     <div class="mood-item">
@@ -536,7 +496,7 @@
     <div class="mood-item">
       <img src="images/extra-03.jpg" alt="Yellow flower adapter spinning">
     </div>
-    <div class="mood-item mood-tall">
+    <div class="mood-item">
       <img src="images/extra-01.jpg" alt="Heart adapter on vinyl in red light">
     </div>
   </div>
